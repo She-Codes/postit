@@ -1,0 +1,14 @@
+<%= render 'shared/content_title', title: 'New Post' %>
+
+<% if @post.errors.any? %>
+  <div class="alert alert-error">
+    <h5>There were some errors</h5>
+    <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div><!--end alert-->
+<% end %>
+
+<%= render 'form', button_text: 'Create Post' %>

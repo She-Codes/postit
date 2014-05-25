@@ -12,6 +12,7 @@
         <small>at <%= post.created_at %></small>
         <span><%= link_to( "#{post.comments.size} comments", post_path(post) ) %></span>
       </p>
+      <p>(<%= link_to( "edit post", edit_post_path(post) ) %>)</p>
     </div><!--end .well-->
   </div><!--end .row-->
 

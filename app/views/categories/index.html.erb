@@ -1,0 +1,5 @@
+<%= render 'shared/content_title', title: 'All Categories' %>
+
+<% @categories.each do |category| %>
+  <h5><%= category.name.capitalize %></h5>
+<% end %>

@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.creator = User.first
 
     if @post.save
       flash[:notice] = "Your post was created."
@@ -26,8 +27,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "Your post was saved."
-      redirect_to posts_path
+      flash[:notice] = "Your post was updated."
+      redirect_to post_path(@post)
     else
       render 'edit'
     end
@@ -40,6 +41,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :url, :description)
   end
 end

@@ -6,4 +6,6 @@ PostitTemplate::Application.routes.draw do
   end
 
   resources :categories, only: [:new, :create, :show]
+
+  get '/example-forms', to: 'forms#index'
 end

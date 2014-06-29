@@ -1,0 +1,26 @@
+<%= render 'shared/content_title', title: "Profile: #{current_user.username}" %>
+
+<hr>
+
+<div class="well">
+  <dl class="dl-horizontal">
+    <dt>Username:</dt>
+    <dd><%= current_user.username %></dd>
+    <dt>Timezone:</dt>
+    <dd>placeholder</dd>
+  </dl>
+</div><!--end .well-->
+
+<div>
+  <h5><%= "#{current_user.username}'s Activity" %></h5>
+
+  <div class="posts">
+    <%= render current_user.posts %>
+  </div>
+
+  <div class="comments">
+    <% current_user.comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment, post_title: find_comment_post_title(comment) %>
+    <% end %>
+  </div>
+</div>

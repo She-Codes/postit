@@ -1,0 +1,10 @@
+<div class="well span8">
+  <em>
+    <%= comment.body %>
+    <% if post_title %>
+      <%= " on #{post_title}" %>
+    <% end %>
+  </em>
+  <br>
+  <span class="quiet">by </span><%= comment.creator.username %><small> at <%= convert_time(comment.created_at) %></small>
+</div>

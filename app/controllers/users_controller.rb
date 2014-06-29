@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_user, only: [:edit, :update]
+  
+  def show
+
+  end
+
   def new
     @user = User.new
   end
@@ -8,10 +15,26 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "You are registered."
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:notice] = "Your profile has been updated"
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def set_user
+    @user = current_user
   end
 
   private

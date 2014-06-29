@@ -8,6 +8,8 @@
       <small>at <%= convert_time(post.created_at) %></small>
       <span><%= link_to( "#{post.comments.size} comments", post_path(post) ) %></span>
     </p>
-    <p>(<%= link_to( "edit post", edit_post_path(post) ) %>)</p>
+    <% if logged_in? %>
+      <p>(<%= link_to( "edit post", edit_post_path(post) ) %>)</p>
+    <% end %>
   </div><!--end .well-->
 </div><!--end .row-->

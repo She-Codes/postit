@@ -1,10 +1,10 @@
+<% post_title ||= false %>
+
 <div class="well span8">
-  <em>
-    <%= comment.body %>
-    <% if post_title %>
-      <%= " on #{post_title}" %>
-    <% end %>
-  </em>
+  <em><%= comment.body %></em>
+  <% if post_title %>
+    on <%= link_to "#{comment.post.title}", post_path(comment.post) %>
+  <% end %>
   <br>
-  <span class="quiet">by </span><%= comment.creator.username %><small> at <%= convert_time(comment.created_at) %></small>
+  <span class="quiet">by </span><%= link_to comment.creator.username, user_path(comment.creator) %><small> at <%= convert_time(comment.created_at) %></small>
 </div>

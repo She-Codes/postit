@@ -1,6 +1,5 @@
-<%= render 'shared/content_title', title: "Profile: #{current_user.username}" %>
+<%= render 'shared/content_title', title: "Profile: #{@user.username}" %>
 
-<hr>
 
 <div class="well">
   <dl class="dl-horizontal">
@@ -12,15 +11,29 @@
 </div><!--end .well-->
 
 <div>
-  <h5><%= "#{current_user.username}'s Activity" %></h5>
+  <h5><%= "#{@user.username}'s Activity" %></h5>
 
-  <div class="posts">
-    <%= render current_user.posts %>
-  </div>
+  <ul class="nav nav-tabs">
+    <!--Posts tab, show by default-->
+    <li class="<%= 'active' if params[:tab].nil? %>">
+      <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
+    </li>
+    <!--Comments tab-->
+    <!--pass in a 'tab' key, with 'comments' value to params when comments tab is clicked-->
+    <li class="<%= 'active' if params[:tab] == 'comments' %>">
+      <%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: 'comments') %>
+    </li>
+  </ul>
 
-  <div class="comments">
-    <% current_user.comments.each do |comment| %>
-      <%= render 'comments/comment', comment: comment, post_title: find_comment_post_title(comment) %>
-    <% end %>
-  </div>
+  <% if params[:tab].nil? %><!--show posts by default-->
+    <div class="posts">
+      <%= render @user.posts %>
+    </div>
+  <% else %>
+    <div class="comments">
+      <% @user.comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment, post_title: true %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -40,7 +40,6 @@ class PostsController < ApplicationController
   def vote
     @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
 
-    #how does this work if no validations on vote?
     if @vote.valid?
       flash[:notice] = "Your vote was counted."
     else

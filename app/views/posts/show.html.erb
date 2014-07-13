@@ -1,31 +1,38 @@
-<p class="pull-right">
-  <% if logged_in? %>
-    [<%= link_to 'edit this post', edit_post_path(@post) %>]
-  <% end %>
-</p>
+<% content_for :body_class, "show-post" %>
+<div class="row">
+  <div class="well span9">
+    <p class="pull-right">
+      <% if logged_in? %>
+        [<%= link_to 'edit this post', edit_post_path(@post) %>]
+      <% end %>
+    </p>
 
-<p>
-  <%= render @post.categories %>
-</p>
+    <p>
+      <%= render @post.categories %>
+    </p>
+    <%= render 'shared/content_title', title: @post.title %>
 
-<%= render 'shared/content_title', title: @post.title %>
-
-<p><%= @post.description %></p>
-
-<% if logged_in? %>
-  <%= render 'shared/errors', object: @comment %>
-
-  <%= form_for [@post, @comment] do |f| %>
-    <div class="control-group">
-      <%= f.label :body, 'Leave a comment' %>
-      <%= f.text_area :body %>
+    <div class="description">
+      <p><%= @post.description %></p>
     </div>
-    
-    <%= f.submit 'Create comment', class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
 
-<h5>Comments:</h5>
+    <% if logged_in? %>
+      <hr>
+      <%= render 'shared/errors', object: @comment %>
+
+      <%= form_for [@post, @comment] do |f| %>
+        <div class="control-group">
+          <%= f.label :body, 'Leave a comment:' %>
+          <%= f.text_area :body, rows: 5 %>
+        </div>
+        
+        <%= f.submit 'Create comment', class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  </div><!--end .well-->
+</div><!--end .row-->
+
+<h5 class="heading">Comments:</h5>
 
 <% @post.comments.each do |comment| %>
   <%= render 'comments/comment', comment: comment %>

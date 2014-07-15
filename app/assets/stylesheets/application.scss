@@ -19,6 +19,10 @@
  $carribean_green: #03C9A9;
  $aqua_island: #A2DED0;
  $mountain_meadow: #1BBC9B;
+ $aqua_island: #A2DED0;
+ $sunset_orange: #F64747;
+ $derby: #FFECDB;
+
 
 body {
   font-family: 'PT Mono';
@@ -56,6 +60,10 @@ a:hover, a:active {
     padding-top: 10px;
     padding-bottom: 8px; 
   }
+}
+
+.nav-categories li {
+  text-transform: capitalize; 
 }
 
 .lead {
@@ -239,4 +247,16 @@ h5.heading {
   p {
     margin: 0;
   }
+}
+
+.alert-success {
+  background-color: lighten($aqua_island, 15%);
+  border-color: $mountain_meadow;
+  color: $mountain_meadow;
+}
+
+.alert-danger, .alert-error {
+  color: $sunset_orange;
+  background-color: $derby;
+  border-color: $sunset_orange;
 }

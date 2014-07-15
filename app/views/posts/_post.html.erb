@@ -14,7 +14,7 @@
   <!-- end Voting-->
   <div class="span8 post well">
     <%= render post.categories %>
-    <h4><%= link_to post.title, fix_url(post.url) %></h4>
+    <h4><%= link_to post.title, fix_url(post.url), target: '_blank' %></h4>
     <p><%= post.description %></p>
     <p class="meta">
       <span class="quiet">posted by <%= link_to post.creator.username, user_path(post.creator) %></span>

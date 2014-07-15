@@ -2,7 +2,7 @@
 <div class="row">
   <div class="well span9">
     <p class="pull-right">
-      <% if logged_in? %>
+      <% if logged_in? && current_user == @post.creator %>
         [<%= link_to 'edit this post', edit_post_path(@post) %>]
       <% end %>
     </p>

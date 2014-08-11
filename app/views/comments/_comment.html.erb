@@ -3,12 +3,12 @@
   <!-- Voting -->
   <% if logged_in? %>
     <div class="span0 well votes text-center">
-      <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post', remote: true do %>
         <i class="icon-chevron-up"></i>
       <% end %>
-      <%= comment.total_votes %>
+      <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span>
       <br>
-      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true do %>
         <i class="icon-chevron-down"></i>
       <% end %>
     </div><!--end .well-->

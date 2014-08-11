@@ -38,21 +38,23 @@ class PostsController < ApplicationController
   end
 
   def vote
-    vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+    @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
 
-    
-      respond_to do |format|
-        if vote.valid?
-          format.html { redirect_to :back, flash: {notice: "Your vote was counted"} }
-          format.js
+    respond_to do |format|
+      format.html do
+        if @vote.valid? 
+          flash[:notice] = "Your vote was counted."
         else
-          format.html { redirect_to :back, flash: {error: "You can only vote on a post once."} }
+          flash[:error] = "You can only vote on a post once."
         end
+        redirect_to :back
       end
+      format.js
+    end
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
   private

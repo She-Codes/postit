@@ -13,7 +13,14 @@ class Post < ActiveRecord::Base
 
 
   def generate_slug
-    self.slug = self.title.gsub(' ', '-').downcase
+    possible_slug = self.title.gsub(' ', '-').downcase
+    posts_with_slug = Post.where("slug = '#{possible_slug}'")
+    num_of_posts_with_slug = posts_with_slug.length
+    if num_of_posts_with_slug > 0
+      self.slug = "#{possible_slug}-#{num_of_posts_with_slug + 1}"
+    else
+      self.slug = possible_slug
+    end
   end
 
   def to_param

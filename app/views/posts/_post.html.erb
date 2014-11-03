@@ -18,7 +18,7 @@
     <p><%= post.description %></p>
     <p class="meta">
       <span class="quiet">posted by <%= link_to post.creator.username, user_path(post.creator) %></span>
-      <small>at <%= convert_time(post.created_at) %></small>
+      <small>at <%= display_date_time(post.created_at) %></small>
       <span><%= link_to( "#{post.comments.size} comments", post_path(post) ) %></span>
     </p>
   </div><!--end .well-->

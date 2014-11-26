@@ -1,0 +1,227 @@
+$raleway: 'Raleway', sans-serif;
+
+$red: #D6444E;
+$light_grey: #F5F5F5;
+$dark_grey: #333;
+$blue: #557390;
+$green: #BDCFA2;
+$khaki: #E8DBB5;
+$orange: #E89827;
+
+body {
+    background: #FFF;
+    font-family: $raleway;
+}
+
+h4 {
+    a {
+        color: $blue;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 28px;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px 15px 15px 0;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    // position: absolute;
+    // top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    // text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    // color: #fff;
+    // background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+// .sidebar-nav > .sidebar-brand {
+//     height: 65px;
+//     font-size: 18px;
+//     line-height: 60px;
+// }
+
+// .sidebar-nav > .sidebar-brand a {
+//     color: #999999;
+// }
+
+// .sidebar-nav > .sidebar-brand a:hover {
+//     color: #fff;
+//     background: none;
+// }
+
+/* PostIt Styles */
+
+.sidebar-wrapper {
+    background: #F5F5F5;
+}
+
+#logo {
+    background: #FFF;
+    a {
+        color: $red;
+        font-size: 83px;
+        font-weight: 100;
+        display: block;
+        text-align: center;
+    }
+}
+
+.sidebar-nav {
+    text-align: center;
+}
+
+.post-vote-wrapper {
+    
+}
+
+.votes {
+    float: left;
+    text-align: center;
+
+    a {
+        display: block;
+        color: $dark_grey;
+    }
+
+    i {
+        font-size: 14px;
+    }
+
+    span {
+        display: block;
+        font-size: 16px;
+        font-weight: 300;
+    }
+}
+
+.post {
+    float: left;
+    border-left: 1px solid $blue;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    padding-left: 20px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .meta a {
+        color: $red;
+    }
+}
+
+.categories {
+    span {
+        padding-right: 13px;
+
+        i {
+            padding-right: 2px;
+        }
+
+        a {
+            color: $dark_grey;
+        }
+    }
+}
+
+
+/* Media Queries */
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px 20px 20px 0;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

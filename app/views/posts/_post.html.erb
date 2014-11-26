@@ -1,25 +1,29 @@
-<div class="row">
-  <!-- Voting -->
-  <% if logged_in? %>
-    <div class="span0 well votes text-center">
-      <%= link_to vote_post_path(post, vote: true), method: 'post', remote: true do %>
-        <i class="icon-chevron-up"></i>
-      <% end %>
-      <span id="post_<%= post.slug %>_votes"><%= post.total_votes %></span>
-      <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
-        <i class="icon-chevron-down"></i>
-      <% end %>
-    </div><!--end .well-->
-  <% end %>
-  <!-- end Voting-->
-  <div class="span8 post well">
-    <%= render post.categories %>
-    <h4><%= link_to post.title, fix_url(post.url), target: '_blank' %></h4>
-    <p><%= post.description %></p>
-    <p class="meta">
-      <span class="quiet">posted by <%= link_to post.creator.username, user_path(post.creator) %></span>
-      <small>at <%= display_date_time(post.created_at) %></small>
-      <span><%= link_to( "#{post.comments.size} comments", post_path(post) ) %></span>
-    </p>
-  </div><!--end .well-->
+<div class="row post-vote-wrapper">
+  <div class="col-lg-12">
+    <!-- Voting -->
+      <div class="votes">
+        <%= link_to vote_post_path(post, vote: true), method: 'post', remote: true do %>
+          <%= icon('long-arrow-up') %>
+        <% end %>
+        <span id="post_<%= post.slug %>_votes"><%= post.total_votes %></span>
+        <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
+          <%= icon('long-arrow-down') %>
+        <% end %>
+      </div><!--end .votes-->
+    <!-- end Voting-->
+    <div class="post">
+      <div class="categories"><%= render post.categories %></div>
+      <h4><%= link_to post.title, fix_url(post.url), target: '_blank' %></h4>
+      <p><%= post.description %></p>
+      <p class="meta">
+        <span class="quiet">posted by <%= link_to post.creator.username, user_path(post.creator) %></span>
+        <small>at <%= display_date_time(post.created_at) %></small>
+        <span>
+          <%= link_to post_path(post) do %>
+             <%= post.comments.size %> comments <%= icon('comment') %>
+          <% end %>
+        </span>
+      </p>
+    </div><!--end .post-->
+  </div><!-- end .post-vote-wrapper-->
 </div><!--end .row-->

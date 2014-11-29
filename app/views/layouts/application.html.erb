@@ -16,30 +16,93 @@
     <div id="wrapper">
       <!-- Sidebar -->
         <div id="sidebar-wrapper">
-          <div id="logo"><%= link_to 'P', root_path %></div>
+          <div id="logo">
+            <%= link_to 'P', root_path %>
+            <div></div>
+          </div>
+
+          <h1 class="site-name">PostIt</h1>
+
           <ul class="sidebar-nav">
-            <li>
-              <a href="#">Dashboard</a>
-            </li>
-            <li>
-              <a href="#">Shortcuts</a>
-            </li>
-            <li>
-              <a href="#">Overview</a>
-            </li>
-            <li>
-              <a href="#">Events</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Services</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
+            <% 
+              categories = Category.all.sort_by{|cat|
+                cat.name.capitalize
+              }
+            %>
+            <% categories.each_with_index do |c, i| %>
+              <% if i < 6 %>
+                <li>
+                  <%= link_to c.name.capitalize, category_path(c) %>
+                </li>
+              <% end %>
+
+              <% if i > 6 %>
+                <li>
+                  <%= link_to c.name.capitalize, category_path(c), class: 'expanded-view-cat' %>
+                </li>
+              <% end %>
+            <% end %>
+
+            <% if Category.all.length > 6 %>
+              <li>
+                <a href="" class="view-cats">
+                  View All <%= icon('sort-down') %>
+                </a> 
+              </li>
+
+              <li>
+                <a href="" class="hide-cats">
+                  Show Less <%= icon('sort-up') %>
+                </a> 
+              </li>
+            <% end %>
           </ul>
+
+          <div id="user-buttons">
+            <% if logged_in? %>
+              <div class="user-options-wrapper">
+                <%= link_to '', class: 'top-level user-options-button' do %>
+                  <%= icon('gear') %>
+                  <span><%= current_user.username %></span>
+                <% end %>
+
+                <div class="user-links-wrapper">
+                  <ul class="user-links">
+                    <li>
+                      <%= link_to user_path(current_user) do %>
+                        <%= icon('eye') %> View Profile
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to edit_user_path(current_user) do %>
+                        <%= icon('pencil') %> Edit Profile
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to logout_path do %>
+                        <%= icon('times') %> Logout
+                      <% end %>
+                    </li>
+                  </ul><!--end .user-links-->
+                </div><!-- end .user-links-wrapper-->
+              </div><!-- end .user-options-wrapper -->
+
+              <%= link_to new_post_path, class: 'top-level' do %>
+                <%= icon('plus') %>
+                <span>New Post</span>
+              <% end %>
+            <% else %>
+              <%= link_to register_path, class: 'top-level' do %>
+                <%= icon('pencil-square-o') %>
+                <span>Register</span>
+              <% end %>
+
+              <%= link_to login_path, class: 'top-level' do %>
+                <%= icon('key') %>
+                <span>Sign In</span>
+              <% end %>
+            <% end %>
+          </div><!-- end #user-buttons -->
         </div><!-- #sidebar-wrapper -->
 
         <!-- Page Content -->

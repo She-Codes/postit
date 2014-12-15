@@ -13,6 +13,23 @@ body {
     font-family: $raleway;
 }
 
+h1 {
+    color: $blue;
+    font-weight: 200;
+    font-size: 48px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+h3 {
+    color: $blue;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 30px;
+    padding-bottom: 25px;
+}
+
 h4 {
     a {
         color: $blue;
@@ -24,6 +41,12 @@ h4 {
             color: $blue;
         }
     }
+}
+
+.grid:after {
+    content: "";
+  display: table;
+  clear: both;
 }
 
 /*!
@@ -229,7 +252,121 @@ h4 {
 .post-vote-wrapper {
     margin-bottom: 40px;
     position: relative;
+    padding: 10px 0;
+    transition: all 0.2s;
 
+    .hover-link {
+        padding-left: 7px;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background: #EFEFEF;
+
+        .hover-link {
+            opacity: 1;
+        }
+    }
+
+    .post {
+        border-left: 1px solid $blue;
+        margin-left: 26px;
+        padding-left: 20px;
+
+        a {
+            text-decoration: none;
+        }
+
+        .meta {
+
+            p {
+                margin: 0;
+            }
+
+            a {
+                color: $red;
+            }
+        }
+    }
+}
+
+.single-post {
+    [class^="col"]{
+       padding-left: 0;
+    }
+
+    .edit {
+        float: right;
+        padding-left: 15px;
+
+        a {
+            display: block;
+            background: $red;
+            color: #FFF;
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 2px 9px;
+        }
+    }
+
+    .categories {
+        float: left;
+    }
+}
+
+.comment-list {
+    margin-top: 25px;
+
+    &:before {
+        content: "";
+        border-top: 1px solid $red;
+        width: 45px;
+    }
+
+    h3 {
+        margin-top: 25px;
+        margin-left: -15px;
+    }
+}
+
+.comment-vote-wrapper {
+    margin-bottom: 40px;
+    position: relative;
+    padding: 10px 0;
+    background: #EFEFEF;
+
+    .hover-link {
+        padding-left: 7px;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+
+    .comment {
+        padding-left: 20px;
+
+        a {
+            text-decoration: none;
+        }
+
+        .meta {
+
+            p {
+                margin: 0;
+            }
+
+            a {
+                color: $red;
+            }
+        }
+    }
+}
+
+.comment-form {
+    [class^="col"]{
+       padding-left: 0;
+       padding-right: 0;
+    }
 }
 
 .votes {
@@ -253,20 +390,6 @@ h4 {
         display: block;
         font-size: 16px;
         font-weight: 300;
-    }
-}
-
-.post {
-    border-left: 1px solid $blue;
-    margin-left: 26px;
-    padding-left: 20px;
-
-    a {
-        text-decoration: none;
-    }
-
-    .meta a {
-        color: $red;
     }
 }
 

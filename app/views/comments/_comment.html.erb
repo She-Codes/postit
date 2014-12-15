@@ -1,27 +1,28 @@
 <% post_title ||= false %>
-<div class="row">
+<div class="row comment-vote-wrapper">
+  <div class="col-lg-12">
   <!-- Voting -->
   <% if logged_in? %>
-    <div class="span0 well votes text-center">
+    <div class="votes">
       <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post', remote: true do %>
-        <i class="icon-chevron-up"></i>
+        <%= icon('long-arrow-up') %>
       <% end %>
       <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span>
-      <br>
       <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true do %>
-        <i class="icon-chevron-down"></i>
+        <%= icon('long-arrow-down') %>
       <% end %>
-    </div><!--end .well-->
+    </div><!--end .votes-->
   <% end %>
   <!-- end Voting-->
-  <div class="well comment span8">
-      <p>
-      "<%= comment.body %>"
+  <div class="comment">
+    <p><%= link_to comment.creator.username, user_path(comment.creator) %></p>
+    <p><%= display_date_time(comment.created_at) %></p>
+    <p>"<%= comment.body %>"</p>
+    <p>
       <% if post_title %>
         on <%= link_to "#{comment.post.title}", post_path(comment.post) %>
       <% end %>
-      <br>
-      <span class="quiet">by </span><%= link_to comment.creator.username, user_path(comment.creator) %><small> at <%= display_date_time(comment.created_at) %></small>
     </p>
-  </div>
-</div><!--end .row-->
+  </div><!-- end .comment -->
+  </div><!-- end .col-lg-12-->
+</div><!-- end .comment-vote-wrapper -->

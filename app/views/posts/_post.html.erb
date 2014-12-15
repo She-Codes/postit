@@ -13,7 +13,12 @@
     <!-- end Voting-->
     <div class="post">
       <div class="categories"><%= render post.categories %></div>
-      <h4><%= link_to post.title, fix_url(post.url), target: '_blank' %></h4>
+      <h4>
+        <%= link_to fix_url(post.url), target: '_blank' do %>
+          <%= post.title %>
+          <%= icon('share-square-o', '', class: 'hover-link') %>
+        <% end %>
+      </h4>
       <p><%= post.description %></p>
       <p class="meta">
         <span class="quiet">posted by <%= link_to post.creator.username, user_path(post.creator) %></span>

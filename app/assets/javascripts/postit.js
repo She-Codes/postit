@@ -1,4 +1,4 @@
-$(document).ready(function(){
+function ready(){
   $('.view-cats').click(function(e){
     e.preventDefault();
     $(this).addClass('hide');
@@ -27,4 +27,7 @@ $(document).ready(function(){
       $('.user-links').addClass('show');
     }
   })
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

@@ -1,19 +1,22 @@
 <%= render 'shared/content_title', title: "Profile: #{@user.username}" %>
 
+<div class="row user-info">
+  <div class="col-lg-9">
+    <div class="panel panel-default">
+      <dl class="dl-horizontal">
+        <dt>Username:</dt>
+        <dd class="uppercase"><%= @user.username %></dd>
+        <dt>Timezone:</dt>
+        <dd class="uppercase"><%= @user.time_zone %></dd>
+      </dl>
+    </div><!-- end .panel -->
+  </div><!--end .col-lg-9 -->
+</div><!--end .user-info-->
 
-<div class="well">
-  <dl class="dl-horizontal">
-    <dt>Username:</dt>
-    <dd class="uppercase"><%= @user.username %></dd>
-    <dt>Timezone:</dt>
-    <dd class="uppercase"><%= @user.time_zone %></dd>
-  </dl>
-</div><!--end .well-->
-
-<div>
+<div class="user-activity">
   <h4 class="heading"><%= "#{@user.username}'s Activity" %></h4>
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-pills">
     <!--Posts tab, show by default-->
     <li class="<%= 'active' if params[:tab].nil? %>">
       <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
@@ -36,4 +39,4 @@
       <% end %>
     </div>
   <% end %>
-</div>
+</div><!-- end .user-activity -->

@@ -15,14 +15,22 @@
   <% end %>
   <!-- end Voting-->
   <div class="comment">
-    <p><%= link_to comment.creator.username, user_path(comment.creator) %></p>
+    <p class="creator"><%= link_to comment.creator.username, user_path(comment.creator) %></p>
     <p><%= display_date_time(comment.created_at) %></p>
-    <p>"<%= comment.body %>"</p>
-    <p>
+    <p class="comment-body">
       <% if post_title %>
-        on <%= link_to "#{comment.post.title}", post_path(comment.post) %>
+        <% if truncate_string(comment.body, 25) %>
+          <%= truncate_string(comment.body, 25) + "......" %>
+        <% else %>
+          "<%= comment.body %>"
+        <% end %>
+      <% else %>
+        "<%= comment.body %>"
       <% end %>
     </p>
+    <% if post_title %>
+      <p class="comment-post-title">on <%= link_to "#{comment.post.title}", post_path(comment.post) %></p>
+    <% end %>
   </div><!-- end .comment -->
   </div><!-- end .col-lg-12-->
 </div><!-- end .comment-vote-wrapper -->

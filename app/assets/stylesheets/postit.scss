@@ -1,7 +1,7 @@
 $raleway: 'Raleway', sans-serif;
 
 $red: #D6444E;
-$light_grey: #F5F5F5;
+$light_grey: #EFEFEF;
 $dark_grey: #333;
 $blue: #557390;
 $green: #BDCFA2;
@@ -41,6 +41,17 @@ h4 {
             color: $blue;
         }
     }
+}
+
+input[type="text"].form-control, textarea.form-control {
+    border-color: rgba(153, 153, 153, 0.37);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: $dark_grey;
+}
+
+input[type="submit"] {
+    font-weight: 500;
 }
 
 .grid:after {
@@ -249,6 +260,21 @@ h4 {
     }
 }
 
+.cat-header {
+    h1 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    i {
+        font-size: 19px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
 .post-vote-wrapper {
     margin-bottom: 40px;
     position: relative;
@@ -262,7 +288,7 @@ h4 {
     }
 
     &:hover {
-        background: #EFEFEF;
+        background: $light_grey;
 
         .hover-link {
             opacity: 1;
@@ -334,7 +360,7 @@ h4 {
     margin-bottom: 40px;
     position: relative;
     padding: 10px 0;
-    background: #EFEFEF;
+    background: $light_grey;
 
     .hover-link {
         padding-left: 7px;
@@ -366,6 +392,17 @@ h4 {
     [class^="col"]{
        padding-left: 0;
        padding-right: 0;
+    }
+
+    .comment-label {
+        @extend h3;
+        font-size: 25px;
+        padding-bottom: 5px;
+    }
+
+    .btn {
+        margin-top: 15px;
+        float: right;
     }
 }
 
@@ -498,6 +535,62 @@ h4 {
 
 }
 
+.user-info {
+    .panel {
+        padding-top: 20px;
+    }
+}
+
+.user-activity {
+    .heading {
+        color: $red;
+        font-size: 22px;
+        font-weight: normal;
+        text-transform: uppercase;
+        padding-bottom: 4px;
+    }
+
+    .comment-vote-wrapper {
+        background: none;
+        transition: all 0.2s;
+
+        &:hover {
+            background: $light_grey;
+        }
+    }
+
+    .comment {
+        margin-left: 26px;
+        border-left: 1px solid $blue;
+
+        .creator {
+            display: none;
+        }
+
+        .comment-body {
+            color: $blue;
+            font-weight: 300;
+            font-size: 28px;
+        }
+
+        .comment-post-title a {
+            color: $red;
+        }
+    }
+}
+
+
+/* Bootstrap Overrides */
+.nav-pills a {
+    color: $red;
+}
+
+.nav-pills > li.active > a, 
+.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a:focus {
+    background-color: $red;
+}
+
 
 /* Media Queries */
 @media(min-width:768px) {
@@ -524,5 +617,17 @@ h4 {
     #wrapper.toggled #page-content-wrapper {
         position: relative;
         margin-right: 0;
+    }
+
+    .dl-horizontal dt {
+        width: 90px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 115px;
+    }
+
+    .post {
+        width: 50%;
     }
 }

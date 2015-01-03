@@ -1,6 +1,6 @@
-<% header = link_to('All Posts', posts_path) + " &raquo; #{@category.name}".html_safe %>
+<% header = link_to('All Posts', posts_path) + " &raquo; ".html_safe + icon('paper-plane-o') + "#{@category.name}".html_safe %>
 
-<%= render 'shared/content_title', title: header %>
+<div class="cat-header"><%= render 'shared/content_title', title: header %></div>
 
 <% @category.posts.each do |post| %>
   <%= render 'posts/post', post: post %>

@@ -14,4 +14,11 @@ module ApplicationHelper
 
     dt.strftime("%m/%d/%Y %l:%M%P %Z")
   end
+
+  def truncate_string(str, length)
+    if str.length > length
+      str.slice(0, length)
+    end
+  end
+
 end

@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="well span8">
+  <div class="col-lg-9">
     <%= form_for @user do |f| %>
       <div class="control-group">
         <%= f.label :username %>
-        <%= f.text_field :username %>
+        <%= f.text_field :username, class: 'form-control' %>
       </div>
       <div class="control-group">
         <%= f.label :password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: 'form-control' %>
       </div>
       <div class="control-group">
         <%= f.label :time_zone %>
@@ -20,5 +20,5 @@
 
       <%= f.submit (@user.new_record? ? 'Register' : 'Update Profile'), class: 'btn btn-success' %>
     <% end %>
-  </div><!--end .well-->
+  </div><!--end .col-lg-9-->
 </div><!--end .row-->

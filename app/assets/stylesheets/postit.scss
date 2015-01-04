@@ -7,6 +7,7 @@ $blue: #557390;
 $green: #BDCFA2;
 $khaki: #E8DBB5;
 $orange: #E89827;
+$green: #5EB05F;
 
 body {
     background: #FFF;
@@ -43,6 +44,30 @@ h4 {
     }
 }
 
+label {
+    @extend h3;
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+
+label[class^="checkbox"] {
+    color: $dark_grey;
+    font-size: 15px;
+    padding-bottom: 0;
+    margin-right: 10px;
+
+    input {
+        margin-top: 2px;
+    }
+}
+
+.check-box-label {
+    @extend label;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    display: block;
+}
+
 input[type="text"].form-control, textarea.form-control {
     border-color: rgba(153, 153, 153, 0.37);
     -webkit-box-shadow: none;
@@ -52,6 +77,11 @@ input[type="text"].form-control, textarea.form-control {
 
 input[type="submit"] {
     font-weight: 500;
+}
+
+.btn {
+    margin-top: 15px;
+    float: right;
 }
 
 .grid:after {
@@ -393,17 +423,6 @@ input[type="submit"] {
        padding-left: 0;
        padding-right: 0;
     }
-
-    .comment-label {
-        @extend h3;
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
-
-    .btn {
-        margin-top: 15px;
-        float: right;
-    }
 }
 
 .votes {
@@ -591,6 +610,32 @@ input[type="submit"] {
     background-color: $red;
 }
 
+.checkbox-inline + .checkbox-inline {
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+.alert-success {
+    color: #FFF;
+    background-color: #5EB05F;
+    border: none;
+}
+
+.alert-danger {
+    color: #FFF;
+    background-color: #E26161;
+    border: none;
+}
+
+.alert-dismissable .close {
+    text-shadow: none;
+    opacity: 0.5;
+    color: #FFF;
+
+    &:hover, &:focus {
+        opacity: 1;
+    }
+}
 
 /* Media Queries */
 @media(min-width:768px) {

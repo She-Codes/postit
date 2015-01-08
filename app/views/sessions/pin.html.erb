@@ -1,14 +1,17 @@
-<%= render 'shared/content_title', title: 'Enter Your Pin to Log In' %>
-
+<div class="row">
+  <div class="col-lg-9">
+    <%= render 'shared/content_title', title: 'Enter Your Pin to Log In' %>
+  </div>
+</div><!-- end .row -->
 <p>Your account is locked.  You will recieve a text message with a pin number.</p>
 <p>Enter the pin number to unlock your account and proceed with login.</p>
 
-<div class="well">
-<%= form_tag '/pin' do %>
-  <div class='control-group'>
+<div>
+<%= form_tag '/pin', class: 'pin-form' do %>
+  <div>
   <%= label_tag :pin, "Pin Number" %>
-  <%= text_field_tag :pin, params[:pin] || '' %>
+  <%= text_field_tag :pin, params[:pin] || '', class: 'form-control' %>
   </div>
-  <%= submit_tag "Unlock your account", class: 'btn btn-success' %>
+  <%= submit_tag "Unlock your account", class: 'btn btn-primary' %>
 <% end %>
 </div>

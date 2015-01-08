@@ -26,7 +26,22 @@ function ready(){
     } else {
       $('.user-links').addClass('show');
     }
-  })
+  });
+
+  $('.new-options-button').click(function(e){
+    e.preventDefault();
+    if ( $(this).hasClass('show') ){
+      $(this).removeClass('show');
+    } else {
+      $(this).addClass('show');
+    }
+
+    if ( $('.new-links').hasClass('show') ){
+      $('.new-links').removeClass('show');
+    } else {
+      $('.new-links').addClass('show');
+    }
+  });
 }
 
 $(document).ready(ready);

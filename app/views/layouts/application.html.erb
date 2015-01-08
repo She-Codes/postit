@@ -87,10 +87,26 @@
                 </div><!-- end .user-links-wrapper-->
               </div><!-- end .user-options-wrapper -->
 
-              <%= link_to new_post_path, class: 'top-level' do %>
-                <%= icon('plus') %>
-                <span>New Post</span>
-              <% end %>
+              <div class="new-options-wrapper">
+                <%= link_to '', class: 'top-level new-options-button' do %>
+                  <%= icon('plus') %>
+                  <span>New</span>
+                <% end %>
+                  <div class="new-links-wrapper">
+                    <ul class="new-links">
+                      <li>
+                        <%= link_to new_post_path do %>
+                          <%= icon('edit') %> New Post
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to new_category_path do %>
+                          <%= icon('th-large') %> New Category
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div><!-- .new-links-wrapper-->
+              </div><!-- end .new-options-wrapper -->
             <% else %>
               <%= link_to register_path, class: 'top-level' do %>
                 <%= icon('pencil-square-o') %>

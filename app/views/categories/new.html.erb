@@ -1,14 +1,19 @@
+<div class="row">
+  <div class="col-lg-9">
 <%= render 'shared/content_title', title: 'Create A New Category' %>
+  </div><!--end .col-lg-9 -->
+</div><!-- end .row -->
 
-<%= render 'shared/errors', object: @category %>
-
-<div class="well">
-  <%= form_for @category do |f| %>
-    <div class="control-group">
+<div class="row">
+  <div class="col-lg-9">
+  <%= form_for @category, html: {class: "cat-form"} do |f| %>
+    <%= render 'shared/errors', object: @category %>
+    <div>
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
     </div><!--end .control-group-->
 
     <%= f.submit 'Create Category', class: 'btn btn-primary' %>
   <% end %>
-</div><!--end .well-->
+</div><!--end .col-lg-9 -->
+</div><!-- end .row -->

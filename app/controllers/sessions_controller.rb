@@ -28,7 +28,10 @@ class SessionsController < ApplicationController
   end
 
   def pin
-    access_denied if session[:two_factor].nil?
+    if session[:two_factor].nil?
+      flash[:error] = "Sorry you can't do that."
+      redirect_to root_path
+    end
     if request.post?
       user = User.find_by pin: params[:pin]
       if user

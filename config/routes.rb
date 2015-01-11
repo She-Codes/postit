@@ -24,5 +24,10 @@ PostitTemplate::Application.routes.draw do
 
   resources :categories, only: [:new, :create, :show]
 
-  resources :users, only: [:show, :create, :edit, :update]
+  resources :users, only: [:show, :create, :edit, :update] do 
+    member do
+      get 'admin'
+    end
+  end
+
 end

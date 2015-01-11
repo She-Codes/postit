@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-9">
+    <%= render 'shared/content_title', title: 'Dashboard' %>
+  </div><!--end .col-lg-9 -->
+</div><!-- end .row -->
+
+<div class="row">
+  <div class="col-lg-9">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% User.all.each do |user| %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= user.admin? || user.moderator? ? user.role : "No Role" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!--end .col-lg-9-->
+</div><!--end .row-->

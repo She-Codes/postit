@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(role: 'user'))
 
     if @user.save
       flash[:notice] = "You are registered."
@@ -30,10 +30,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def admin
-
   end
 
 

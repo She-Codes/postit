@@ -80,7 +80,7 @@
                     </li>
                     <% if current_user.admin? %>
                       <li>
-                        <%= link_to admin_user_path(current_user) do %>
+                        <%= link_to admin_users_path do %>
                           <%= icon('briefcase') %> Dashboard
                         <% end %>
                       </li>

@@ -4,8 +4,15 @@ module Admin
       @users = User.all
     end
 
-    def create
-      if User.update(users_params.keys, users_params.values)
+    def update
+      #binding.pry
+      # unless users_params[:users_to_delete].empty?
+      # users = User.all
+      # users_params[:users_to_delete].each {|u|
+      #   users.destroy(u)
+      # }
+      # end
+      if User.update(users_params[:users_to_update].keys, users_params[:users_to_update].values)
         flash[:notice] = "User roles have been updated."
         redirect_to admin_users_path
       else
@@ -17,7 +24,10 @@ module Admin
     private 
 
     def users_params
-      params.require(:users)
+      params.require(:users).permit(users_to_delete: []).tap do |whitelisted| 
+        whitelisted[:users_to_update] = params[:users][:users_to_update] 
+      end
     end
   end
 end
+

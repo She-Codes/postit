@@ -12,19 +12,21 @@
           <tr>
             <th>User</th>
             <th>Role</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <%= fields_for "users[]", user, {index: user.id} do |f| %>
+            <%= fields_for "users[users_to_update][]", user, {index: user.id} do |f| %>
               <tr>
                 <td><%= user.username %></td>
                 <td>
                   <%= f.select(:role, [['user', 'user'],
                     ['moderator', 'moderator'], ['admin', 'admin']]) %>
                 </td>
-              </tr>
             <% end %><!-- end fields_for -->
+                <td><%= check_box_tag("users[users_to_delete][]", user.id, false, {id: "check-#{user.id}"}) %></td>
+              </tr>
           <% end %><!-- end @users loop -->
         </tbody>
       </table>

@@ -28,7 +28,8 @@ PostitTemplate::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:index, :create]
+    resources :users, only: [:index, :update]
+    resources :categories, only: [:index, :update]
   end
 
 end

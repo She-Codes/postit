@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="col-lg-9">
-    <%= form_tag '/admin/users', method: 'post' do %>
+    <%= form_tag '/admin/users', method: 'post', class: 'admin-user-form' do %>
       <table class="table">
         <thead>
           <tr>
@@ -25,7 +25,7 @@
                     ['moderator', 'moderator'], ['admin', 'admin']]) %>
                 </td>
             <% end %><!-- end fields_for -->
-                <td><%= check_box_tag("users[users_to_delete][]", user.id, false, {id: "check-#{user.id}"}) %></td>
+                <td><%= check_box_tag("users[users_to_delete][]", user.id, false, {id: "check-#{user.id}", class: "delete-check"}) %></td>
               </tr>
           <% end %><!-- end @users loop -->
         </tbody>
@@ -34,3 +34,20 @@
     <% end %>
   </div><!--end .col-lg-9-->
 </div><!--end .row-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Warning!" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Warning!</h4>
+      </div>
+      <div class="modal-body">
+        <p>You have selected users to delete. Click Submit to continue or Close to cancel.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary modal-submit">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

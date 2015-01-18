@@ -6,14 +6,18 @@ module Admin
 
     def update
       #binding.pry
-      # unless users_params[:users_to_delete].empty?
-      # users = User.all
-      # users_params[:users_to_delete].each {|u|
-      #   users.destroy(u)
-      # }
-      # end
+      # update roles then delete if any are selected
       if User.update(users_params[:users_to_update].keys, users_params[:users_to_update].values)
-        flash[:notice] = "User roles have been updated."
+        # delete
+        # if users_params[:users_to_delete]
+        #   unless users_params[:users_to_delete].empty?
+        #     users = User.all
+        #     users_params[:users_to_delete].each {|u|
+        #       users.destroy(u)
+        #     }
+        #   end
+        # end
+        flash[:notice] = "Users have been updated."
         redirect_to admin_users_path
       else
         flash[:error] = "There was a problem."

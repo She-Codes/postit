@@ -42,6 +42,24 @@ function ready(){
       $('.new-links').addClass('show');
     }
   });
+
+  $('.admin-user-form').submit(function(e){
+    var checked = false
+    $('.delete-check').each(function(){
+      if ( $(this).prop('checked') ){
+        checked = true;
+      }
+    });
+    if ( checked ) {
+      e.preventDefault();
+      $('#myModal').modal();
+
+      $('.modal-submit').click(function(){
+        $('.admin-user-form').submit();
+      });
+      
+    }
+  });
 }
 
 $(document).ready(ready);

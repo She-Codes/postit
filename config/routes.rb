@@ -28,8 +28,9 @@ PostitTemplate::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:index, :update]
+    resources :users, only: [:index]
     resources :categories, only: [:index, :update]
   end
+  post '/admin/users', to: 'admin/users#update'
 
 end

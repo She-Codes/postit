@@ -1,22 +1,22 @@
 module Admin
   class UsersController < ApplicationController
+    before_action :require_admin
     def index
       @users = User.all
     end
 
     def update
-      #binding.pry
       # update roles then delete if any are selected
       if User.update(users_params[:users_to_update].keys, users_params[:users_to_update].values)
         # delete
-        # if users_params[:users_to_delete]
-        #   unless users_params[:users_to_delete].empty?
-        #     users = User.all
-        #     users_params[:users_to_delete].each {|u|
-        #       users.destroy(u)
-        #     }
-        #   end
-        # end
+        if users_params[:users_to_delete]
+          unless users_params[:users_to_delete].empty?
+            users = User.all
+            users_params[:users_to_delete].each {|u|
+              users.destroy(u)
+            }
+          end
+        end
         flash[:notice] = "Users have been updated."
         redirect_to admin_users_path
       else

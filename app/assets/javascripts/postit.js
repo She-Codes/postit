@@ -43,23 +43,33 @@ function ready(){
     }
   });
 
-  $('.admin-user-form').submit(function(e){
-    var checked = false
-    $('.delete-check').each(function(){
-      if ( $(this).prop('checked') ){
-        checked = true;
+  function deleteWarning(){
+    var haltSubmit = true;
+    $('.admin-user-form').submit(function(e){
+      var checked = false;
+      var dataSubmit = $('.admin-user-form input[type="submit"]').attr('data-submit');
+      
+      $('.delete-check').each(function(){
+        if ( $(this).prop('checked') ){
+          checked = true;
+        }
+      });
+      if ( checked && haltSubmit ) {
+        e.preventDefault();
+        $('#myModal').modal();
+        haltSubmit = false;     
       }
-    });
-    if ( checked ) {
-      e.preventDefault();
-      $('#myModal').modal();
 
       $('.modal-submit').click(function(){
         $('.admin-user-form').submit();
       });
-      
-    }
-  });
+
+      $('.modal-close').click(function(){
+        haltSubmit = true;
+      });
+    });
+  };
+  deleteWarning();
 }
 
 $(document).ready(ready);

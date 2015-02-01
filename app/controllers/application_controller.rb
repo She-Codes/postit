@@ -24,6 +24,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin_mod
+    unless logged_in? && (current_user.moderator? || current_user.admin?)
+      flash[:error] = "Sorry must be an admin or moderator to do that."
+      redirect_to root_path
+    end
+  end
+
   def access_denied
     flash[:error] = "Must be logged in to do that."
     redirect_to root_path

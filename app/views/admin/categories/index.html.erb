@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-9">
+    <%= render 'shared/content_title', title: 'Dashboard' %>
+  </div><!--end .col-lg-9 -->
+</div><!-- end .row -->
+
+<div class="row">
+  <div class="col-lg-9">
+    <%= render 'admin/shared/admin_nav' %>
+  </div><!--end .col-lg-9 -->
+</div><!-- end .row -->
+
+<div class="row">
+  <div class="col-lg-9">
+    <%= form_tag '/admin/categories', method: 'delete', class: 'admin-category-form' do %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |cat| %>
+              <tr>
+                <td><%= cat.name %></td>
+                <td class="delete-cell"><%= check_box_tag("categories[cats_to_delete][]", cat.id, false, {id: "check-#{cat.id}", class: "delete-check"}) %></td>
+              </tr>
+          <% end %><!-- end @categories loop -->
+        </tbody>
+      </table>
+      <%= submit_tag "Delete", class: 'btn btn-primary' %>
+    <% end %>
+  </div><!--end .col-lg-9-->
+</div><!--end .row-->

@@ -29,8 +29,9 @@ PostitTemplate::Application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index]
-    resources :categories, only: [:index, :update]
+    resources :categories, only: [:index]
   end
   post '/admin/users', to: 'admin/users#update'
+  delete '/admin/categories', to: 'admin/categories#destroy'
 
 end

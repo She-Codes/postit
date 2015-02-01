@@ -6,6 +6,12 @@
 
 <div class="row">
   <div class="col-lg-9">
+    <%= render 'admin/shared/admin_nav' %>
+  </div><!--end .col-lg-9 -->
+</div><!-- end .row -->
+
+<div class="row">
+  <div class="col-lg-9">
     <%= form_tag '/admin/users', method: 'post', class: 'admin-user-form' do %>
       <table class="table">
         <thead>
@@ -25,12 +31,12 @@
                     ['moderator', 'moderator'], ['admin', 'admin']]) %>
                 </td>
             <% end %><!-- end fields_for -->
-                <td><%= check_box_tag("users[users_to_delete][]", user.id, false, {id: "check-#{user.id}", class: "delete-check"}) %></td>
+                <td class="delete-cell"><%= check_box_tag("users[users_to_delete][]", user.id, false, {id: "check-#{user.id}", class: "delete-check"}) %></td>
               </tr>
           <% end %><!-- end @users loop -->
         </tbody>
       </table>
-      <%= submit_tag "Update" %>
+      <%= submit_tag "Update", class: 'btn btn-primary' %>
     <% end %>
   </div><!--end .col-lg-9-->
 </div><!--end .row-->

@@ -85,6 +85,13 @@
                         <% end %>
                       </li>
                     <% end %>
+                    <% if current_user.moderator? %>
+                      <li>
+                        <%= link_to admin_categories_path do %>
+                          <%= icon('briefcase') %> Dashboard
+                        <% end %>
+                      </li>
+                    <% end %>
                     <li>
                       <%= link_to logout_path do %>
                         <%= icon('times') %> Logout
@@ -106,11 +113,13 @@
                           <%= icon('edit') %> New Post
                         <% end %>
                       </li>
-                      <li>
-                        <%= link_to new_category_path do %>
-                          <%= icon('th-large') %> New Category
-                        <% end %>
-                      </li>
+                      <% if current_user.moderator? || current_user.admin?%>
+                        <li>
+                          <%= link_to new_category_path do %>
+                            <%= icon('th-large') %> New Category
+                          <% end %>
+                        </li>
+                      <% end %>
                     </ul>
                   </div><!-- .new-links-wrapper-->
               </div><!-- end .new-options-wrapper -->
@@ -141,8 +150,7 @@
 
           </div><!-- end .container-fluid -->
         </div><!-- end #page-content-wrapper -->
-        
-
     </div><!-- end #wrapper -->
+    <a href="" id="menu-toggle"><%= icon('navicon') %></a>
   </body>
 </html>

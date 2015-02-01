@@ -1,11 +1,12 @@
 <ul class="nav nav-pills dashboard-tabs">
   <!--Posts tab, show by default-->
-  <li class="<%= 'active' if controller_path == 'admin/users' %>">
-    <%= link_to "Users", admin_users_path %>
-  </li>
-  <!--Comments tab-->
-  <!--pass in a 'tab' key, with 'comments' value to params when comments tab is clicked-->
-  <li class="<%= 'active' if controller_path == 'admin/categories' %>">
-    <%= link_to "Categories", admin_categories_path %>
-  </li>
+  <% if current_user.admin? %>
+    <li class="<%= 'active' if controller_path == 'admin/users' %>">
+      <%= link_to "Users", admin_users_path %>
+    </li>
+
+    <li class="<%= 'active' if controller_path == 'admin/categories' %>">
+      <%= link_to "Categories", admin_categories_path %>
+    </li>
+  <% end %>
 </ul>

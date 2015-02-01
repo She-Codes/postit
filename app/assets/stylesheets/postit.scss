@@ -687,8 +687,20 @@ input[type="submit"] {
     }
 }
 
+#menu-toggle {
+    position: absolute;
+    top: 9px;
+    right: 16px;
+    font-size: 37px;
+    display: block;
+    color: $dark_grey;
+}
+
 /* Media Queries */
 @media(min-width:768px) {
+    .fa-navicon {
+        display: none;
+    }
     #wrapper {
         padding-left: 250px;
     }

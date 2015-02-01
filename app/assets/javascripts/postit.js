@@ -41,7 +41,14 @@ function ready(){
     } else {
       $('.new-links').addClass('show');
     }
+
+
   });
+
+  $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
   function deleteWarning(){
     var haltSubmit = true;
